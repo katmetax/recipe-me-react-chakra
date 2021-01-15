@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import SearchBar from "./components/SearchBar";
+import DisplayRecipes from "./components/DisplayRecipes";
+import "./App.css";
 
-function App() {
+import { Button, useColorMode } from "@chakra-ui/react";
+
+const App = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <Button onClick={toggleColorMode}>
+          Toggle {colorMode === "light" ? "Dark" : "Light"}
+        </Button>
       </header>
+      <h1>Recipe Me!</h1>
+      <SearchBar />
+      <DisplayRecipes />
     </div>
   );
-}
+};
 
 export default App;
